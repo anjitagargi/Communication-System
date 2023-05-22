@@ -1,0 +1,27 @@
+t = 0:1/1e3:3;
+d=0:1/5:3;
+pi=3.14;
+x=sin(2*pi*t);
+y=pulstran(t,d,'rectpuls',0.1);
+z=x.*y;
+[d,n]=butter(1,2*pi*0.5/1000);
+f1=filter(d,n,z);
+f2=filter(d,n,f1);
+f3=filter(d,n,f2);
+f4=filter(d,n,f3);
+subplot(3,1,1);
+plot(t,x);
+title("Message signal");
+xlabel("time");
+ylabel("Magnitude");
+subplot(3,1,2);
+plot(t,z);
+title("PAM signal");
+xlabel("time");
+ylabel("Magnitude");
+subplot(3,1,3);
+plot(t,f4);
+title("Demodulated signal");
+xlabel("Time");
+ylabel("magnitude");
+
