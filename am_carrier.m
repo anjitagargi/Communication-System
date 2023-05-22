@@ -1,0 +1,27 @@
+clc;
+clear all;
+close all;
+pi=3.14;
+a_m=input("Enter Am :");
+a_c=input("Enter Ac :");
+f_m=input("Enter fm :");
+f_c=input("Enter fc :");
+t=0:0.01:10;
+x_m=a_m*cos(2*pi*f_m*t);
+x_c=a_c*cos(2*pi*f_c*t);
+am=(1+(x_m/a_c)).*x_c;
+subplot(3,1,1);
+plot(t,x_m);
+title("Message Signal")
+xlabel("Time");
+ylabel("Message signal amplitude");
+subplot(3,1,2);
+plot(t,x_c);
+title("Carrier Signal");
+xlabel("Time");
+ylabel("Carrier Signal amplitude");
+subplot(3,1,3);
+plot(t,am);
+title("Amplitude Modulated Signal");
+xlabel("Time");
+ylabel("AM signal amplitude");
